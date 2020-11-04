@@ -1,27 +1,35 @@
-import React, {Component} from 'react';
+import React, { useEffect } from 'react';
 import * as d3 from 'd3';
+import { axisLeft } from 'd3';
 
-export default class Axis extends Component {
-  gRef = React.createRef();
+const Axis = props => {
+  const {y, align } = props;
+  const gRef = React.createRef();
 
-  componentDidMount(){
-    this.d3render()
-  }
-  componentDidUpdate(){
-    this.d3render()
-  }
+  useEffect(()=>{
+    d3render()
+  })
 
-  d3render() {
+  // const alignAxis = (scale, alignAngle = align) => {
+  //   switch(align) {
+  //     case 'bottom':
+  //       return d3.axisBottom();
+  //     case 'left':
+  //       return d3.axisLeft(scale);
+  //     default: 
+  //       return d3.axisBottom(scale);
+  //   }
+  // }
 
+  const d3render = () => {
     const scale = d3.scaleLinear().domain([0, 10]).range([0, 200])
-    const axis = d3.axisBottom(scale);
-
-    d3.select(this.gRef.current).call(axis);
+    const axis = axisLeft(scale);
+    // const axis = alignAxis(scale);
+    d3.select(gRef.current).call(axis);
   }
-
-  render() {
-    const { y } = this.props;
-
-    return <g transform={`translate(10, 10)`} ref={this.gRef} />;
-  }
+  return ( 
+  <g  transform={`translate(100, 100)`} ref={gRef} />
+  );
 }
+
+export default Axis;
