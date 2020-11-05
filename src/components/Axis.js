@@ -12,7 +12,7 @@ const Axis = props => {
   const alignAxis = (scale, alignAngle = align) => {
     switch(align) {
       case 'bottom':
-        return d3.axisBottom();
+        return d3.axisBottom(scale);
       case 'left':
         return d3.axisLeft(scale);
       default: 
