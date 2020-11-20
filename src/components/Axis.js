@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import * as d3 from 'd3';
 
 const Axis = props => {
-  const {y, align } = props;
+  const {align } = props;
   const gRef = React.createRef();
 
   useEffect(()=>{
