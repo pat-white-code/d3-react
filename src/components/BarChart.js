@@ -14,7 +14,7 @@ const BarChart = d3BlackBox(function(){
   var g = svg.append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  d3.tsv('data.tsv', (d)=> {
+  d3.tsv('https://cdn.rawgit.com/mbostock/3885304/raw/a91f37f5f4b43269df3dbabcda0090310c05285d/data.tsv', (d)=> {
       d.frequency = +d.frequency;
       return d;
     }).then(data =>{
