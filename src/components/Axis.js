@@ -22,12 +22,13 @@ const Axis = props => {
 
   const d3render = () => {
     const scale = d3.scaleLinear().domain([0, 10]).range([0, 300])
+
     // const axis = d3.axisLeft(scale);
     const axis = alignAxis(scale);
     d3.select(gRef.current).call(axis);
   }
   return ( 
-  <g  transform={`translate(30, 30)`} ref={gRef} />
+  <g  transform={`translate(${props.x}, ${props.y})`} ref={gRef} />
   );
 }
 
