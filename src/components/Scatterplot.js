@@ -1,9 +1,10 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import * as d3 from 'd3';
 import Axis2 from './Axis2';
+import AxisClass from './AxisClass';
 
 
-class Scatterplot extends PureComponent {
+class Scatterplot extends Component {
   state = {
     xScale: d3
       .scaleLinear()
@@ -12,8 +13,7 @@ class Scatterplot extends PureComponent {
     yScale: d3
       .scaleLinear()
       .domain([0, 100])
-      .range([0, this.props.height]),
-    circleR: 5,
+      .range([0, this.props.height])
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -27,15 +27,12 @@ class Scatterplot extends PureComponent {
 
   render() {
     const {x, y, data, height, dataPoint} = this.props,
-    {xScale, yScale, circleR} = this.state;
+    {xScale, yScale} = this.state;
 
     return (
       <g transform={`translate(${x}, ${y})`}>
-        {/* {data.map(([x,y], idx) => (
-          <circle key={idx} cx={this.state.xScale(x)} cy={this.state.yScale(y)} r={3} />
-        ))} */}
         {data.map(([x,y]) => (
-          dataPoint({x: xScale(x), y: yScale(y), r:circleR})
+          dataPoint({x: xScale(x), y: yScale(y)})
         ))}
         <Axis2 x={0} y={0} type='Left' scale={yScale} />
         <Axis2 x={0} y={height} scale={xScale} type="Bottom" />

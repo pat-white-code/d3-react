@@ -5,8 +5,6 @@ import Scatterplot from './components/Scatterplot';
 import * as d3 from 'd3';
 import DataPoint from './components/DataPoint';
 
-const data = d3.range(100).map(() => [Math.floor(Math.random()*100), Math.floor(Math.random() * 100)])
-
 
 class App extends Component {
   state = {
@@ -30,7 +28,7 @@ class App extends Component {
             width={this.state.width}
             height={this.state.height}
             data={this.state.data} 
-            dataPoint = {({x, y, r}) => <DataPoint x={x} y={y} r={r} />}
+            dataPoint = {({x, y}) => <DataPoint x={x} y={y} />}
             
             />
         </svg>
