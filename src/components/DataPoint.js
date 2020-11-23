@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 
 const Circle = styled.circle`
@@ -6,17 +6,36 @@ const Circle = styled.circle`
   stroke: steelblue;
   stroke-width: 2px;
   fill-opacity: 0.5;
+  transition: 1000ms;
   &:hover{
     fill: red;
     stroke: red;
   }
 `
 
-const DataPoint = props => {
-  const {x, y} = props;
-  return (
-    <Circle cx={x} cy={y} r={5} />
-  )
-};
+class DataPoint extends Component {
+  state = {
+    radius: 5
+  };
+
+  handleMouseEnter = () => {
+    this.setState({
+      radius: 10
+    })
+  }
+
+  handleMouseLeave = () => {
+    this.setState({
+      radius: 5
+    })
+  }
+
+  render() {
+    const {x, y} = this.props;
+    return (
+      <Circle onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} cx={x} cy={y} r={this.state.radius} />
+    );
+  }
+}
 
 export default DataPoint;

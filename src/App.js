@@ -30,7 +30,7 @@ class App extends Component {
             width={this.state.width}
             height={this.state.height}
             data={this.state.data} 
-            dataPoint = {({x, y}) => <DataPoint x={x} y={y} />}
+            dataPoint = {({x, y, r}) => <DataPoint x={x} y={y} r={r} />}
             
             />
         </svg>
