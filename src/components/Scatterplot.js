@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as d3 from 'd3';
 import Axis2 from './Axis2';
-import AxisClass from './AxisClass';
+
 
 
 class Scatterplot extends Component {
