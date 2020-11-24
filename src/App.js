@@ -1,72 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import './styles.css';
-import Scatterplot from './components/Scatterplot';
-import * as d3 from 'd3';
-import DataPoint from './components/DataPoint';
+import Preloader from './components/PreLoader';
 
 const App = () => {
-  const [dimensions, setDimensions] = useState({height: 300, width: 300})
   const [data, setData] = useState([]);
 
-  useEffect(()=> {
-    setData(d3.range(100).map(() => [Math.floor(Math.random()*100), Math.floor(Math.random() * 100)]));
-  }, [])
-
-  const handleClick = () => {
-    setDimensions({
-      width: dimensions.width * .8,
-      height: dimensions.height * .8,
-    })
-  }
-
-  return(
-    <div>
-      <svg width="800" height="800" id="svg" onClick={handleClick}>
-        <Scatterplot 
-          y={50} 
-          x={50} 
-          width={dimensions.width}
-          height={dimensions.height}
-          data={data} 
-          dataPoint = {({x, y}) => <DataPoint x={x} y={y} />}
-          />
-      </svg>
-    </div>
-  )
+    return (
+      <div>
+        {data.length > 1 ? (
+          <Preloader />
+        ) : (
+          <div className='app'>
+            <h1> this is your app</h1>
+          </div>
+        )}
+      </div>
+    )
 }
 
 export default App;
-
-// class App extends Component {
-//   state = {
-//     width: 300,
-//     height: 300,
-//     data: d3.range(100).map(() => [Math.floor(Math.random()*100), Math.floor(Math.random() * 100)])
-//   }
-//   handleClick = () => {
-//     this.setState({
-//       width: this.state.width * .8,
-//       height: this.state.height * .8,
-//     })
-//   }
-//   render() {
-//     return (
-//       <div>
-//         <svg width="800" height="800" id="svg" onClick={this.handleClick}>
-//           <Scatterplot 
-//             y={50} 
-//             x={50} 
-//             width={this.state.width}
-//             height={this.state.height}
-//             data={this.state.data} 
-//             dataPoint = {({x, y}) => <DataPoint x={x} y={y} />}
-            
-//             />
-//         </svg>
-//       </div>
-//     );
-//   }
-// }
-
-// export default App;
