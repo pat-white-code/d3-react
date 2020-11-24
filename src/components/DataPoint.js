@@ -6,10 +6,11 @@ const Circle = styled.circle`
   stroke: steelblue;
   stroke-width: 2px;
   fill-opacity: 0.5;
-  transition: 1000ms;
+  transition: 500ms;
   &:hover{
     fill: red;
     stroke: red;
+    cursor: pointer;
   }
 `
 
