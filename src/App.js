@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import './styles.css';
+import "bootstrap/dist/css/bootstrap.css"
 import Preloader from './components/PreLoader';
 
 const App = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([1,2,3]);
 
     return (
       <div>
